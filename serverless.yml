@@ -1,0 +1,37 @@
+service: ig-images
+
+frameworkVersion: ">=1.8.0"
+
+custom:
+  imageBucket: ig-images-dev
+
+provider:
+  deploymentBucket: artefacts.ig-images.371548805176
+  name: aws
+  runtime: nodejs4.3
+  stage: dev # just a default
+  region: eu-west-1
+  profile: ${env:AWS_PROFILE}
+  environment:
+    OBJECT_PREFIX: v1/
+
+functions:
+  list:
+    handler: handler.list
+    role: ${env:AWS_ROLE}
+    environment:
+      IMAGE_BUCKET: ${self:custom.imageBucket}
+    events:
+      - http:
+          path: list
+          method: get
+
+  get-upload-url:
+    handler: handler.getUploadUrl
+    role: ${env:AWS_ROLE}
+    environment:
+      IMAGE_BUCKET: ${self:custom.imageBucket}
+    events:
+      - http:
+          path: get-upload-url
+          method: get

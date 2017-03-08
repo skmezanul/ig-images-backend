@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "env": "env $(cat .env | xargs)",
+    "deploy:client": "yarn run env -- serverless client deploy",
+    "deploy:service": "yarn run env -- serverless deploy",
+    "remove:service": "yarn run env -- serverless remove",
+    "deploy:service:prod": "yarn run env -- serverless deploy --stage production"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.24.0",
+    "uuid": "^3.0.1"
+  },
+  "devDependencies": {
+    "serverless": "^1.8.0"
+  }
+}
