@@ -1,16 +1,31 @@
 {
-  "scripts": {
-    "env": "env $(cat .env | xargs)",
-    "deploy:client": "yarn run env -- serverless client deploy",
-    "deploy:service": "yarn run env -- serverless deploy",
-    "remove:service": "yarn run env -- serverless remove",
-    "deploy:service:prod": "yarn run env -- serverless deploy --stage production"
-  },
   "dependencies": {
     "aws-sdk": "^2.24.0",
+    "babel-runtime": "^6.23.0",
+    "bluebird": "^3.5.0",
     "uuid": "^3.0.1"
   },
   "devDependencies": {
+    "babel-cli": "^6.23.0",
+    "babel-eslint": "^7.1.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.1.11",
+    "babel-preset-stage-0": "^6.22.0",
+    "eslint": "^3.16.1",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-babel": "^4.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.0",
     "serverless": "^1.8.0"
+  },
+  "private": true,
+  "scripts": {
+    "build": "babel --out-dir dist.service service",
+    "deploy:client": "yarn run env -- serverless client deploy",
+    "deploy:service": "yarn run env -- serverless deploy",
+    "deploy:service:prod": "yarn run env -- serverless deploy --stage production",
+    "env": "env $(cat .env | xargs)",
+    "remove:service": "yarn run env -- serverless remove"
   }
 }
