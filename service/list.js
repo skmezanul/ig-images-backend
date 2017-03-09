@@ -13,6 +13,9 @@ export default async () => {
   const data = await listObjects(params);
 
   return {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
     body: JSON.stringify({
       prefix: `http://${process.env.IMAGE_BUCKET}.s3-website-eu-west-1.amazonaws.com/${process.env.OBJECT_PREFIX}`,
 

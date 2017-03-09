@@ -11,10 +11,15 @@ const contentTypes = {
 export default async (event) => {
   const query = event.queryStringParameters;
 
+  const headers = {
+    'Access-Control-Allow-Origin': '*',
+  };
+
   // complain if no query string
   if (!query) {
     return {
       statusCode: 400,
+      headers,
       body: JSON.stringify({
         error: 'Need query parameters',
       }),
@@ -27,6 +32,7 @@ export default async (event) => {
   if (!contentType) {
     return {
       statusCode: 400,
+      headers,
       body: JSON.stringify({
         error: `Need 'type' query param set to one of: ${Object.keys(contentTypes)}`,
       }),
@@ -50,6 +56,7 @@ export default async (event) => {
 
   return {
     statusCode: 200,
+    headers,
     body: JSON.stringify({
       url,
     }),
