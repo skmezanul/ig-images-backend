@@ -25,6 +25,16 @@ functions:
       - http:
           path: list
           method: get
+          cors:
+            origins:
+              - '*'
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+            allowCredentials: true
 
   get-upload-url:
     handler: handler.getUploadUrl
@@ -35,3 +45,13 @@ functions:
       - http:
           path: get-upload-url
           method: get
+          cors:
+            origins:
+              - '*'
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+            allowCredentials: true
