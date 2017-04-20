@@ -12,6 +12,10 @@ if (typeof IMAGE_BUCKET !== 'string' || typeof OBJECT_PREFIX !== 'string') {
   throw new Error('Env vars required: IMAGE_BUCKET, OBJECT_PREFIX');
 }
 
+const headers = {
+  'Access-Control-Allow-Origin': '*',
+};
+
 export default async (
   event: Event & { queryStringParameters: { [string]: string } },
 ): Promise<Response> => {
@@ -20,9 +24,7 @@ export default async (
   if (authenticated !== true) {
     return {
       statusCode: 401,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-      },
+      headers,
       body: JSON.stringify({
         message: 'Invalid credentials',
       }),
@@ -42,9 +44,7 @@ export default async (
 
   return {
     statusCode: 200,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-    },
+    headers,
     body: JSON.stringify({
       prefix: `http://${IMAGE_BUCKET}.s3-website-eu-west-1.amazonaws.com/${OBJECT_PREFIX}`,
 

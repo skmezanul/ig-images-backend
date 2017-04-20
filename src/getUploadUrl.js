@@ -22,7 +22,6 @@ const validContentTypes = new Set(Object.keys(extensions));
 
 const headers = {
   'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Credentials': 'true', // TODO check if this is needed
 };
 
 const getUploadUrl = async (event: LambdaCall) => {
