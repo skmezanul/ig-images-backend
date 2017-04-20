@@ -3,6 +3,7 @@
 import { S3 } from 'aws-sdk';
 import { promisify } from 'bluebird';
 import { authenticate } from './lib/s3o';
+
 import type { Response } from './types';
 
 const { IMAGE_BUCKET, OBJECT_PREFIX } = process.env;
@@ -40,6 +41,7 @@ export default async (
   const data = await listObjects(params);
 
   return {
+    statusCode: 200,
     headers: {
       'Access-Control-Allow-Origin': '*',
     },

@@ -4,12 +4,7 @@ import crypto from 'crypto';
 import RSA from 'node-rsa';
 import axios from 'axios';
 
-type ValidateOptions = {
-  publicKey: string,
-  username: string,
-  host: string,
-  token: string,
-};
+import type { ValidateOptions } from '../types';
 
 export const validate = ({ publicKey, username, host, token }: ValidateOptions): boolean => {
   const key = `${username}-${host}`;
