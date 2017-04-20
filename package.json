@@ -28,8 +28,8 @@
   "private": true,
   "scripts": {
     "build": "babel --out-dir dist src",
-    "deploy:service": "yarn run env -- serverless deploy",
-    "deploy:service:prod": "yarn run env -- serverless deploy --stage production",
+    "deploy": "yarn run env -- serverless deploy",
+    "deploy:prod": "yarn run env -- serverless deploy --stage production",
     "env": "env $(cat .env | xargs)",
     "remove:service": "yarn run env -- serverless remove"
   }
