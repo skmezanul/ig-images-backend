@@ -28,7 +28,7 @@ jobs:
           path: dist/
           path: .serverless/
       - deploy:
-          name: Maybe deploy to npm
+          name: Maybe deploy
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               yarn run deploy:prod
