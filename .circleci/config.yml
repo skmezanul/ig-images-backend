@@ -26,7 +26,6 @@ jobs:
           command: yarn run build
       - store_artifacts:
           path: dist/
-          path: .serverless/
       - deploy:
           name: Maybe deploy
           command: |
