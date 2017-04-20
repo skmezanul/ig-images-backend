@@ -10,8 +10,6 @@ if (typeof IMAGE_BUCKET !== 'string' || typeof OBJECT_PREFIX !== 'string') {
   throw new Error('Env vars required: IMAGE_BUCKET, OBJECT_PREFIX');
 }
 
-const ONE_YEAR_IN_SECONDS = 1000 * 60 * 24 * 365;
-
 const extensions = {
   'image/svg+xml': 'svg',
   'image/png': 'png',
@@ -68,8 +66,8 @@ const getUploadUrl = async (event: LambdaCall) => {
     Bucket: IMAGE_BUCKET,
     Key: `${OBJECT_PREFIX}${name}`,
     Expires: 600, // the signed upload link lasts up to 10 minutes
-    CacheControl: `max-age=${ONE_YEAR_IN_SECONDS}`,
     ContentType: query.type,
+    CacheControl: 'public, max-age=31536000', // TODO find out why this doesn't work
     ACL: 'public-read',
   };
 
