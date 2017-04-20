@@ -6,10 +6,11 @@
           "node": 4.3
         }
       }
-    ],
-    "stage-0"
+    ]
   ],
   "plugins": [
-    "transform-runtime"
+    "transform-runtime",
+    "transform-flow-strip-types",
+    "transform-object-rest-spread"
   ]
 }
