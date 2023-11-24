@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "@babel/runtime": "^7.16.7",
-    "@okta/jwt-verifier": "^2.3.0",
+    "@okta/jwt-verifier": "^3.0.0",
     "aws-sdk": "^2.43.0",
     "axios": "^0.25.0",
     "bluebird": "^3.5.0",
